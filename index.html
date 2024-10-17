@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Programmer - NILL CODING</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #FF69B4;
+            --secondary-color: #4B0082;
+            --text-color: #333;
+            --bg-color: #F0E6FF;
+            --card-bg: #FFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: rgba(255, 105, 180, 0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 0;
+        }
+
+        #hero {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .anime-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            border: 10px solid var(--card-bg);
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .anime-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(-5deg); }
+            75% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--primary-color), 0 0 20px var(--primary-color); }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--primary-color), 0 0 40px var(--primary-color); }
+        }
+
+        #hero p {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: rgb(255, 255, 255);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--card-bg);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            color: rgb(255, 255, 255);
+            transform: translateY(-3px);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .project img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .skill {
+            background: var(--card-bg);
+            border-radius: 15px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .skill span {
+            font-size: 1rem;
+            margin-top: 10px;
+            color: var(--text-color);
+        }
+
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        #contact input,
+        #contact textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        #contact textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .sparkles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            50% { opacity: 1; transform: translateY(-20px) scale(1); }
+            100% { opacity: 0; transform: translateY(-40px) scale(0); }
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            #hero p { font-size: 1.2rem; }
+            .anime-circle {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="hero">
+        <div class="container">
+            <div class="anime-circle">
+                <img src="https://i1.sndcdn.com/avatars-000214125831-5q6tdw-t500x500.jpg" alt="Anime Avatar">
+            </div>
+            <h1>NILL CODING</h1>
+            <p class="animated-text"></p>
+            <a href="#contact" class="btn">Hubungi Saya</a>
+        </div>
+        <div class="sparkles"></div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Proyek Terbaru</h2>
+            <div class="projects">
+                <div class="project">
+                    <img src="https://cdnid.techinasia.com/wp-content/uploads/2014/11/Snake-II-Featured.jpg" alt="Proyek 1">
+                    <div class="project-info">
+                        <h3>Game Snake</h3>
+                        <p>Cara Bermain:Gunakan tombol panah untuk menggerakkan ular.
+                            Makan makanan (kotak merah) untuk menambah skor dan panjang ular. Hindari menabrak dinding atau badan ular sendiri. Kontrol menggunakan tombol panah pada keyboard. Skor bertambah setiap kali ular memakan makanan. Game berakhir jika ular menabrak dinding atau tubuhnya sendiri. Wajib menggunakan laptop/pc. Link code: https://replit.com/@nillmoderog/game-snake-1#index.html, Code ini bisa di copy. code ini menggunakan code HTML,CSS dan Java Script </p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="	https://www.planetgadget.store/media/kemana/blog/post/a/p/apple-ipad-calculator.jpg" alt="proyek 2">
+                    <div class="project-info">
+                        <h3>Kalkulator</h3>
+                        <p>Coming soon</p>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="/api/placeholder/400/300" alt="Proyek 3">
+                    <div class="project-info">
+                        <h3>Sistem Kasir</h3>
+                        <p>Coming soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Keahlian</h2>
+            <div class="skills">
+                <div class="skill">
+                    <i class="fas fa-code"></i>
+                    <span>HTML/CSS</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-react"></i>
+                    <span>React</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-node"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-database"></i>
+                    <span>MongoDB</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-git-alt"></i>
+                    <span>Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Hubungi Saya</h2>
+            <form>
+                <input type="text" placeholder="Nama Anda" required>
+                <input type="email" placeholder="Email Anda" required>
+                <textarea placeholder="Pesan Anda" required></textarea>
+                <button type="submit" class="btn">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NILLCODING. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        const words = ["Programmer", "Web Developer", "Problem Solver","Pecinta Teknologi"];
+        let currentWord = 0;
+        let currentLetter = 0;
+        const animatedText = document.querySelector('.animated-text');
+
+        function typeWord() {
+            if (currentLetter < words[currentWord].length) {
+                animatedText.textContent += words[currentWord][currentLetter];
+                currentLetter++;
+                setTimeout(typeWord, 100);
+            } else {
+                setTimeout(eraseWord, 1000);
+            }
+        }
+
+        function eraseWord() {
+            if (currentLetter > 0) {
+                animatedText.textContent = words[currentWord].substring(0, currentLetter - 1);
+                currentLetter--;
+                setTimeout(eraseWord, 50);
+            } else {
+                currentWord = (currentWord + 1) % words.length;
+                setTimeout(typeWord, 500);
+            }
+        }
+
+        typeWord();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        // Sparkle animation
+        function createSparkles() {
+            const sparklesContainer = document.querySelector('.sparkles');
+            const numberOfSparkles = 50;
+
+            for (let i = 0; i < numberOfSparkles; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.width = `${Math.random() * 5 + 2}px`;
+                sparkle.style.height = sparkle.style.width;
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 2}s`;
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+
+        createSparkles();
+
+        // Scroll animation
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.project, .skill');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight * 0.75) && (rect.bottom >= 0);
+                el.style.opacity = isVisible ? '1' : '0';
+                el.style.transform = isVisible ? 'translateY(0)' : 'translateY(20px)
+
+127.0.0.1   nillcoding/index.html.com
